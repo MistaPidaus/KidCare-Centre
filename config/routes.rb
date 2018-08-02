@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :taskas
   resources :assignment_marks
   resources :assignments
   resources :courses
