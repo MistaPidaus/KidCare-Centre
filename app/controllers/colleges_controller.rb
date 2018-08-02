@@ -1,5 +1,5 @@
 class CollegesController < ApplicationController
-  before_action :set_college, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /colleges
   # GET /colleges.json
@@ -11,20 +11,25 @@ class CollegesController < ApplicationController
   # GET /colleges/1
   # GET /colleges/1.json
   def show
+    authorize! :read, @college
+    @college = College.find(params[:id])
   end
 
   # GET /colleges/new
   def new
-    @college = College.new
+    authorize! :create, @college
   end
 
   # GET /colleges/1/edit
   def edit
+    authorize! :edit, @college
+    @college = College.find(params[:id])
   end
 
   # POST /colleges
   # POST /colleges.json
   def create
+    authorize! :create, @college
     @college = College.new(college_params)
 
     respond_to do |format|
@@ -41,6 +46,7 @@ class CollegesController < ApplicationController
   # PATCH/PUT /colleges/1
   # PATCH/PUT /colleges/1.json
   def update
+    authorize! :create, @college
     respond_to do |format|
       if @college.update(college_params)
         format.html { redirect_to @college, notice: 'College was successfully updated.' }
@@ -55,6 +61,7 @@ class CollegesController < ApplicationController
   # DELETE /colleges/1
   # DELETE /colleges/1.json
   def destroy
+    authorize! :destroy, @college
     @college.destroy
     respond_to do |format|
       format.html { redirect_to colleges_url, notice: 'College was successfully destroyed.' }

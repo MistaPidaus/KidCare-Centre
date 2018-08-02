@@ -34,6 +34,7 @@
   <strong>Description:</strong>
   <%= @college.description %>
 </p>
-
+<% if current_user.has_role? :admin %>
 <%= link_to 'Edit', edit_college_path(@college) %> |
+<% end %>
 <%= link_to 'Back', colleges_path %>

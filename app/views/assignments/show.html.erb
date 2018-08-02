@@ -20,5 +20,7 @@
   <%= @assignment.unit_id %>
 </p>
 
+<% if current_user.has_role? :admin %>
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<% end %>
 <%= link_to 'Back', assignments_path %>
