@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :taskas
   resources :assignment_marks
   resources :assignments

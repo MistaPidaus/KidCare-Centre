@@ -50,6 +50,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
 gem 'active_model_serializers'
 
 # image/file related
