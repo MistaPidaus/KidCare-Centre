@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Assignment Marks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Marks</th>
+      <th>User</th>
+      <th>Assignment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignment_marks.each do |assignment_mark| %>
+      <tr>
+        <td><%= assignment_mark.file %></td>
+        <td><%= assignment_mark.marks %></td>
+        <td><%= assignment_mark.user_id %></td>
+        <td><%= assignment_mark.assignment_id %></td>
+        <td><%= link_to 'Show', assignment_mark %></td>
+        <td><%= link_to 'Edit', edit_assignment_mark_path(assignment_mark) %></td>
+        <td><%= link_to 'Destroy', assignment_mark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment Mark', new_assignment_mark_path %>

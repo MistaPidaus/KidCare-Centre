@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file: MyText
+  marks: 9.99
+  user_id: 1
+  assignment_id: 1
+
+two:
+  file: MyText
+  marks: 9.99
+  user_id: 1
+  assignment_id: 1

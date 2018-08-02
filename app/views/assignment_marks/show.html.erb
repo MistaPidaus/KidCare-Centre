@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File:</strong>
+  <%= @assignment_mark.file %>
+</p>
+
+<p>
+  <strong>Marks:</strong>
+  <%= @assignment_mark.marks %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @assignment_mark.user_id %>
+</p>
+
+<p>
+  <strong>Assignment:</strong>
+  <%= @assignment_mark.assignment_id %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_mark_path(@assignment_mark) %> |
+<%= link_to 'Back', assignment_marks_path %>

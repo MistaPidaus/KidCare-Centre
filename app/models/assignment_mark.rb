@@ -1,0 +1,2 @@
+class AssignmentMark < ApplicationRecord
+end
