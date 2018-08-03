@@ -28,4 +28,11 @@
 <% if current_user.has_role? :admin %>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <% end %>
+
+<% if @courses.count == 0 %>
+  <%= button_to "Enroll", course_enrol_path(:course_id => @course.id), :method => :post %>
+  <% else %>
+  <div style="background: #d1f7a5; width: 25%; text-align: center; padding: 5px;">You already enrolled to this course</div>
+<% end %>
+
 <%= link_to 'Back', courses_path %>

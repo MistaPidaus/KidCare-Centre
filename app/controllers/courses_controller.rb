@@ -11,6 +11,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    courses = Course.find(params[:id])
+    user = current_user
+
+    @courses = Course.all.where('courses.id' => user.courses.each(&:id))
+
+    #render json: @courses
   end
 
   # GET /courses/new
@@ -65,6 +71,14 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def enrol
+    user = current_user
+    course = Course.find(params[:course_id])
+    user.courses << course 
+    flash[:notice] = 'You have successfully enrolled to this course'
+    redirect_to course_path(course)
   end
 
   private

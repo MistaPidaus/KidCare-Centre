@@ -1,41 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1>List Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Picture</th>
-      <th>Published</th>
-      <th>College</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.title %></td>
-        <td><%= course.description %></td>
-        <td><%= course.picture %></td>
-        <td><%= course.published %></td>
-        <td><%= course.college_id %></td>
-        <% course.unit.each do |unit| %>
-          <td><%= unit.title %></td>
-          <td><%= unit.description %></td>
-        <% end %>
-        </td>
-        <% if current_user.has_role? :admin %>
+ <% @courses.each do |course| %>
+  <h3><%= course.title %></h3>
+  <% if current_user.has_role? :admin %>
           <td><%= link_to 'Show', course %></td>
           <td><%= link_to 'Edit', edit_course_path(course) %></td>
           <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-      </tr>
+  <div class="row">
+    <td><%= course.picture %></td>
+    <td><%= course.description %></td>
+    <td><%= course.published %></td>
+    <td><%= course.college_id %></td>
+  </div>
+
+  <div class="row" style="margin: 10px 0 10px 20px; background: aqua;">
+  <% course.unit.each do |unit| %>
+    <h3><%= unit.title %></h3>
+    <td><%= unit.description %></td>
     <% end %>
-  </tbody>
-</table>
+  </div>
+ <% end %> 
 
 <br>
 

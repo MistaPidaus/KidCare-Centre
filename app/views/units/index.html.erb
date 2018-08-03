@@ -28,9 +28,11 @@
           <% end %>
         </td>
         <td><%= unit.course_id %></td>
-        <td><%= link_to 'Show', unit %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.has_role? :admin %>
+          <td><%= link_to 'Show', unit %></td>
+          <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+          <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +40,6 @@
 
 <br>
 
+<% if current_user.has_role? :admin %>
 <%= link_to 'New Unit', new_unit_path %>
+<% end %>
