@@ -14,14 +14,14 @@ class CoursesController < ApplicationController
     courses = Course.find(params[:id])
     user = current_user
 
-    @courses = Course.all.where('courses.id' => user.courses.each(&:id))
+    #@courses = Course.all.where('courses.id' => user.courses.each(&:id))
 
     #render json: @courses
   end
 
   # GET /courses/new
   def new
-    authorize! :create, @course
+    #authorize! :create, @course
     @course = Course.new
   end
 
@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    authorize! :create, @course
+    #authorize! :create, @course
     @course = Course.new(course_params)
 
     respond_to do |format|

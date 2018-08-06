@@ -1,29 +1,163 @@
 <!DOCTYPE html>
-<html>
+  <html lang="zxx" class="no-js">
   <head>
-    <title>KidCare</title>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" src="" >
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <!-- Site Title -->
+    <title>KidCare</title>
 
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+      <!--
+      CSS
+      ============================================= -->
+      <%= stylesheet_link_tag    'application', media: 'all' %>
+      <%= javascript_include_tag 'application' %>
+    </head>
+    <body>  
+      <header id="header" id="home">
+        <div class="header-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">    
+              </div>
+              <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+                <a href="mailto:hello@kidcare.my"><span class="lnr lnr-envelope"></span> <span class="text">hello@kidcare.my</span></a>     
+              </div>
+            </div>                  
+          </div>
+      </div>
+        <div class="container main-menu">
+          <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+              <a href="index.html"><%= image_tag("logo.png") %></a>
+            </div>
+            <nav id="nav-menu-container">
+              <ul class="nav-menu">
+                <li><%= link_to 'Home', root_path %></li>
+                <li><%= link_to 'Courses', courses_path %></li> 
+                <li class="menu-has-children"><a href="">Pages</a>
+                  <ul>
+                      <li><a href="course-details.html">Course Details</a></li>   
+                      <li><a href="event-details.html">Event Details</a></li>   
+                      <li><a href="elements.html">Elements</a></li>
+                    <li class="menu-has-children"><a href="">Level 2 </a>
+                      <ul>
+                        <li><a href="#">Item One</a></li>
+                        <li><a href="#">Item Two</a></li>
+                      </ul>
+                    </li>                             
+                  </ul>
+                </li>
+                <% if user_signed_in? %>
+                  Logged in as <strong><%= current_user.email %></strong>.
+                  <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |</li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <% else %>
+                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> | </li> 
+                  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+                <% end %>
+              </ul>
+            </nav><!-- #nav-menu-container -->            
+          </div>
+        </div>
+      </header><!-- #header -->
 
-  <body>
-  	<% if notice %>
-	  <p class="alert alert-success"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	  <p class="alert alert-danger"><%= alert %></p>
-	<% end %>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+<!-- start footer Area -->    
+      <footer class="footer-area section-gap">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h4>Top Products</h4>
+                <ul>
+                  <li><a href="#">Managed Website</a></li>
+                  <li><a href="#">Manage Reputation</a></li>
+                  <li><a href="#">Power Tools</a></li>
+                  <li><a href="#">Marketing Service</a></li>
+                </ul>               
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h4>Quick links</h4>
+                <ul>
+                  <li><a href="#">Jobs</a></li>
+                  <li><a href="#">Brand Assets</a></li>
+                  <li><a href="#">Investor Relations</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>               
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h4>Features</h4>
+                <ul>
+                  <li><a href="#">Jobs</a></li>
+                  <li><a href="#">Brand Assets</a></li>
+                  <li><a href="#">Investor Relations</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>               
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h4>Resources</h4>
+                <ul>
+                  <li><a href="#">Guides</a></li>
+                  <li><a href="#">Research</a></li>
+                  <li><a href="#">Experts</a></li>
+                  <li><a href="#">Agencies</a></li>
+                </ul>               
+              </div>
+            </div>                                    
+            <div class="col-lg-4  col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h4>Newsletter</h4>
+                <p>Stay update with our latest</p>
+                <div class="" id="mc_embed_signup">
+                   <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="EMAIL" placeholder="Enter Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email Address '" required="" type="email">
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                          <span class="lnr lnr-arrow-right"></span>
+                        </button>    
+                      </div>
+                        <div class="info"></div>  
+                    </div>
+                  </form> 
+                </div>
+              </div>
+            </div>                      
+          </div>
+
+  <div class="footer-bottom row align-items-center justify-content-between">
+            <p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> KidCare. All rights reserved</p>
+            <div class="col-lg-6 col-sm-12 footer-social">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-dribbble"></i></a>
+              <a href="#"><i class="fa fa-behance"></i></a>
+            </div>
+          </div>            
+        </div>
+      </footer> 
+      <!-- End footer Area -->  
+</body>
 </html>

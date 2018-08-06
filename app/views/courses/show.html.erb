@@ -1,38 +1,96 @@
-<p id="notice"><%= notice %></p>
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @course.title %>   
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Courses', courses_path %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+<!-- Start course-details Area -->
+      <section class="course-details-area pt-120">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 left-contents">
+              <div class="main-image">
+                <%= image_tag('m-img.jpg', class: "img-fluid") %>
+              </div>
+              <div class="jq-tab-wrapper" id="horizontalTab">
+                              <div class="jq-tab-menu">
+                                  <div class="jq-tab-title active" data-tab="1">Objectives</div>
+                                  <div class="jq-tab-title" data-tab="2">Eligibility</div>
+                                  <div class="jq-tab-title" data-tab="3">Course Outline</div>
+                              </div>
+                              <div class="jq-tab-content-wrapper">
+                                  <div class="jq-tab-content active" data-tab="1">
+                                      <%= @course.description %>
+                                  </div>
+                                  <div class="jq-tab-content" data-tab="2">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+                    <br>
+                    <br>
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+                                  </div>
+                                  <div class="jq-tab-content" data-tab="3">
+                    <ul class="course-list">
+                      <% @course.unit.each do |unit| %>
+                      <li class="justify-content-between d-flex">
+                        <p><%= unit.title %></p>
+                        <a class="primary-btn text-uppercase" href="#">View Details</a>
+                      </li>
+                      <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+                    </ul>
+                                  </div>                               
+                              </div>
+                          </div>
+            </div>
+            <div class="col-lg-4 right-contents">
+              <ul>
+                <li>
+                  <a class="justify-content-between d-flex" href="#">
+                    <p>Course Fee </p>
+                    <span>FREE</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="justify-content-between d-flex" href="#">
+                    <p>Certification </p>
+                    <span>After Completion</span>
+                  </a>
+                </li>
+              </ul>
+              <a href="#" class="primary-btn text-uppercase">Enroll the course</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End course-details Area -->
+      
 
-<p>
-  <strong>Picture:</strong>
-  <%= @course.picture %>
-</p>
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
 
-<p>
-  <strong>Published:</strong>
-  <%= @course.published %>
-</p>
-
-<p>
-  <strong>College:</strong>
-  <%= @course.college_id %>
-</p>
-
-<% if current_user.has_role? :admin %>
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<% end %>
-
-<% if @courses.count == 0 %>
-  <%= button_to "Enroll", course_enrol_path(:course_id => @course.id), :method => :post %>
-  <% else %>
-  <div style="background: #d1f7a5; width: 25%; text-align: center; padding: 5px;">You already enrolled to this course</div>
-<% end %>
-
-<%= link_to 'Back', courses_path %>
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

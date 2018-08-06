@@ -1,31 +1,105 @@
-<p id="notice"><%= notice %></p>
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                List Courses   
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Courses', courses_path %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->     
+          
+      <!-- Start popular-course Area -->
+      <section class="popular-course-area section-gap">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+              <div class="title text-center">
+                <h1 class="mb-10">Courses we offer</h1>
+                <p>There is a moment in the life of any aspiring.</p>
+              </div>
+            </div>
+          </div>            
+          <div class="row">
+            <div class="active-popular-carusel">
+              <% @courses.each do |course| %>
+              <div class="single-popular-carusel">
+                <div class="thumb-wrap relative">
+                  <div class="thumb relative">
+                    <div class="overlay overlay-bg"></div>  
+                    <%= image_tag("p1.jpg", class: "img-fluid") %>
+                  </div>                  
+                </div>
+                <div class="details">
+                  <h4>
+                    <%= link_to(course.title, course) %>
+                  </h4>
 
-<h1>List Courses</h1>
+                  <p>
+                    <%= course.description %>                   
+                  </p>
+                </div>
+              </div>
+              <% end %>             
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End popular-course Area -->
+      
 
- <% @courses.each do |course| %>
-  <h3><%= course.title %></h3>
-  <% if current_user.has_role? :admin %>
-          <td><%= link_to 'Show', course %></td>
-          <td><%= link_to 'Edit', edit_course_path(course) %></td>
-          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-  <div class="row">
-    <td><%= course.picture %></td>
-    <td><%= course.description %></td>
-    <td><%= course.published %></td>
-    <td><%= course.college_id %></td>
-  </div>
+      <!-- Start search-course Area -->
+      <section class="search-course-area relative">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-lg-12 mb-50 mt-50">
+              <h1 class="text-white pb-20 text-center mb-30">
+                Get a job with KidCare
+              </h1>
+              <p>
+                inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+              </p>
+              <div class="row details-content">
+                <div class="col single-detials">
+                  <span class="lnr lnr-graduation-hat"></span>
+                  <a href="#"><h4>Expert Instructors</h4></a>   
+                  <p>
+                    Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                  </p>            
+                </div>
+                <div class="col single-detials">
+                  <span class="lnr lnr-license"></span>
+                  <a href="#"><h4>Certification</h4></a>    
+                  <p>
+                    Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                  </p>            
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End search-course Area -->
+            
 
-  <div class="row" style="margin: 10px 0 10px 20px; background: aqua;">
-  <% course.unit.each do |unit| %>
-    <h3><%= unit.title %></h3>
-    <td><%= unit.description %></td>
-    <% end %>
-  </div>
- <% end %> 
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->     
 
-<br>
-
-<% if current_user.has_role? :admin %>
-<%= link_to 'New Course', new_course_path %>
-<% end %>

@@ -1,0 +1,309 @@
+<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-between">
+						<div class="banner-content col-lg-9 col-md-12">
+							<h1 class="text-uppercase">
+								We Ensure better education
+								for a better world			
+							</h1>
+							<p class="pt-10 pb-10">
+								In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.
+							</p>
+							<a href="#" class="primary-btn text-uppercase">Get Started</a>
+						</div>										
+					</div>
+				</div>					
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start feature Area -->
+			<section class="feature-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+									<h4>Learn Online Courses</h4>
+								</div>
+								<div class="desc-wrap">
+									<p>
+										Usage of the Internet is becoming more common due to rapid advancement
+										of technology.
+									</p>
+									<a href="#">Join Now</a>									
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+									<h4>No.1 of universities</h4>
+								</div>
+								<div class="desc-wrap">
+									<p>
+										For many of us, our very first experience of learning about the celestial bodies begins when we saw our first.
+									</p>
+									<a href="#">Join Now</a>									
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<div class="title">
+									<h4>Huge Library</h4>
+								</div>
+								<div class="desc-wrap">
+									<p>
+										If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event.
+									</p>
+									<a href="#">Join Now</a>									
+								</div>
+							</div>
+						</div>												
+					</div>
+				</div>	
+			</section>
+			<!-- End feature Area -->
+					
+			<!-- Start popular-course Area -->
+			<section class="popular-course-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Courses we offer</h1>
+								<p>There is a moment in the life of any aspiring.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="active-popular-carusel">
+							<% @courses.each do |course| %>
+							<div class="single-popular-carusel">
+								<div class="thumb-wrap relative">
+									<div class="thumb relative">
+										<div class="overlay overlay-bg"></div>	
+										<%= image_tag("p1.jpg", class: "img-fluid") %>
+									</div>									
+								</div>
+								<div class="details">
+									<h4>
+										<%= link_to(course.title, course) %>
+									</h4>
+
+									<p>
+										<%= course.description %>										
+									</p>
+								</div>
+							</div>
+							<% end %>							
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End popular-course Area -->
+			
+
+			<!-- Start search-course Area -->
+			<section class="search-course-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-lg-12 mb-50 mt-50">
+							<h1 class="text-white pb-20 text-center mb-30">
+								Get a job with KidCare
+							</h1>
+							<p>
+								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+							</p>
+							<div class="row details-content">
+								<div class="col single-detials">
+									<span class="lnr lnr-graduation-hat"></span>
+									<a href="#"><h4>Expert Instructors</h4></a>		
+									<p>
+										Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									</p>						
+								</div>
+								<div class="col single-detials">
+									<span class="lnr lnr-license"></span>
+									<a href="#"><h4>Certification</h4></a>		
+									<p>
+										Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									</p>						
+								</div>								
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End search-course Area -->
+						
+			<!-- Start review Area -->
+			<section class="review-area section-gap relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row">
+						<div class="active-review-carusel">
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>	
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<%= image_tag("e1.jpg", class: "img-fluid") %>
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Fannie Rowe</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>Hulda Sutton</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+								<p>
+									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
+								</p>
+							</div>																												
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End review Area -->	
+			
+			<!-- Start cta-one Area -->
+			<section class="cta-one-area relative section-gap">
+				<div class="container">
+					<div class="overlay overlay-bg"></div>
+					<div class="row justify-content-center">
+						<div class="wrap">
+							<h1 class="text-white">Become a nanny</h1>
+							<p>
+								There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck.
+							</p>
+							<a class="primary-btn wh" href="#">Apply for the post</a>								
+						</div>					
+					</div>
+				</div>	
+			</section>
+			<!-- End cta-one Area -->
+
+			
+
+			<!-- Start cta-two Area -->
+			<section class="cta-two-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 cta-left">
+							<h1>Not Yet Satisfied with our Trend?</h1>
+						</div>
+						<div class="col-lg-4 cta-right">
+							<a class="primary-btn wh" href="#">view our blog</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End cta-two Area -->
+						

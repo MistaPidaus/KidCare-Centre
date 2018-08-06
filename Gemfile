@@ -59,3 +59,6 @@ gem 'active_model_serializers'
 gem 'carrierwave'
 
 gem 'mysql2'
+
+#Awesome!
+gem "font-awesome-rails"
