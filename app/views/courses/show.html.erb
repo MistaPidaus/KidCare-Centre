@@ -67,9 +67,13 @@
                   </a>
                 </li>
               </ul>
-              <div class="alert alert-danger" role="alert">
-  This is a danger alert—check it out!
-</div>
+              <% if notice %>
+                <div class="alert alert-success" role="alert"><%= notice %></div>
+              <% end %>
+              <% if alert %>
+                <div class="alert alert-danger" role="alert"><%= alert %></div>
+              <% end %>
+              
               <%= link_to "Enroll Course", course_enrol_path(:course_id => @course.id), :method => :post, :class => 'primary-btn text-uppercase' %>
 
             </div>

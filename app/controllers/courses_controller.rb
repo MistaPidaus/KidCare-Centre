@@ -75,12 +75,24 @@ class CoursesController < ApplicationController
   end
 
   def enrol
-    authorize! :enrol, @course
+    #authorize! :enrol, @course
     user = current_user
     course = Course.find(params[:course_id])
-    user.courses << course 
-    flash[:notice] = 'You have successfully enrolled to this course'
-    redirect_to course_path(course)
+
+    #Lets do magic
+    if course.users.count == 0
+      user.courses << course 
+      flash[:notice] = 'You have successfully enrolled to this course'
+    else 
+      flash[:alert] = 'You already enrolled in this course'
+    end
+      redirect_to course_path(course)
+  end
+
+  def mycourse_list
+  end
+
+  def mycourse_show
   end
 
   private
