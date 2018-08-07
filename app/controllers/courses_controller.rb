@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:show, :index]
 
   # GET /courses
   # GET /courses.json
@@ -21,7 +22,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    #authorize! :create, @course
+    authorize! :create, @course
     @course = Course.new
   end
 
@@ -33,7 +34,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    #authorize! :create, @course
+    authorize! :create, @course
     @course = Course.new(course_params)
 
     respond_to do |format|
@@ -74,6 +75,7 @@ class CoursesController < ApplicationController
   end
 
   def enrol
+    authorize! :enrol, @course
     user = current_user
     course = Course.find(params[:course_id])
     user.courses << course 

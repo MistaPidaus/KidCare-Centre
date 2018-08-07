@@ -67,7 +67,11 @@
                   </a>
                 </li>
               </ul>
-              <a href="#" class="primary-btn text-uppercase">Enroll the course</a>
+              <div class="alert alert-danger" role="alert">
+  This is a danger alert—check it out!
+</div>
+              <%= link_to "Enroll Course", course_enrol_path(:course_id => @course.id), :method => :post, :class => 'primary-btn text-uppercase' %>
+
             </div>
           </div>
         </div>  
