@@ -86,13 +86,7 @@ class CoursesController < ApplicationController
     else 
       flash[:alert] = 'You already enrolled in this course'
     end
-      redirect_to course_path(course)
-  end
-
-  def mycourse_list
-  end
-
-  def mycourse_show
+      redirect_to view_mycourse_path(course)
   end
 
   private

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  get 'my_course', to: 'my_course#index'
+  get 'my_course/:id', to: 'my_course#show', as: 'view_mycourse'
+
   root 'home#index'
 
   devise_for :users
