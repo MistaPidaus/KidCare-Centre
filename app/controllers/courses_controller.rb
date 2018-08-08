@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
 
     #@courses = Course.all.where('courses.id' => user.courses.each(&:id))
 
-    #render json: @courses
+    #render json: courses
   end
 
   # GET /courses/new

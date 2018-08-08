@@ -66,13 +66,14 @@
                     <span>After Completion</span>
                   </a>
                 </li>
+
+                <li>
+                  <a class="justify-content-between d-flex" href="#">
+                    <p>Distribute by </p>
+                    <span><%= @course.college.name %></span>
+                  </a>
+                </li>
               </ul>
-              <% if notice %>
-                <div class="alert alert-success" role="alert"><%= notice %></div>
-              <% end %>
-              <% if alert %>
-                <div class="alert alert-danger" role="alert"><%= alert %></div>
-              <% end %>
               
               <%= link_to "Enroll Course", course_enrol_path(:course_id => @course.id), :method => :post, :class => 'primary-btn text-uppercase' %>
 
