@@ -64,6 +64,7 @@
 				    <% end %>
 				  </div>
 				</div>
+				<%= link_to "Award Myself", award_path(:course_id => @current_course.id, :certificate_id => @current_course.certificate.id), :method => :post, :class => 'primary-btn text-uppercase' %> 
           	</div>
           </div>
         </div>  

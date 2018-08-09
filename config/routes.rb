@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :certificates
   get 'my_course', to: 'my_course#index'
   get 'my_course/:id', to: 'my_course#show', as: 'view_mycourse'
+  post 'my_course/:id', to: 'my_course#award', as: 'award'
 
   root 'home#index'
 

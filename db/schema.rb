@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180803040208) do
+ActiveRecord::Schema.define(version: 20180809040255) do
 
   create_table "assignment_marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "file"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20180803040208) do
     t.integer "unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "certificates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description"
+    t.string "file"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "certificates_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "certificate_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "certificate_id"], name: "index_certificates_users_on_user_id_and_certificate_id"
   end
 
   create_table "colleges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
