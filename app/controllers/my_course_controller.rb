@@ -31,7 +31,9 @@ class MyCourseController < ApplicationController
   	#temporary award system (awarding yourself)
  	def award 
  		user = current_user
-	    course = Course.find_by_id(params[:course_id])
+	    course = user.courses.find_by_id(params[:course_id])
+
+	    #render json: user.courses.find_by_id(params[:course_id])
 
 	    certificate = Certificate.find(params[:certificate_id])
 
