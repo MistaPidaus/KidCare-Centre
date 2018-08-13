@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809040255) do
+ActiveRecord::Schema.define(version: 20180809170438) do
 
   create_table "assignment_marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "file"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20180809040255) do
     t.bigint "certificate_id", null: false
     t.bigint "user_id", null: false
     t.index ["user_id", "certificate_id"], name: "index_certificates_users_on_user_id_and_certificate_id"
+  end
+
+  create_table "classrooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "taska_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "colleges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -79,6 +86,24 @@ ActiveRecord::Schema.define(version: 20180809040255) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "payment_method"
+    t.decimal "amount", precision: 10
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "leaves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "start_date"
+    t.string "end_date"
+    t.string "duration"
+    t.string "reason"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "resource_type"
@@ -98,6 +123,14 @@ ActiveRecord::Schema.define(version: 20180809040255) do
     t.string "state"
     t.string "phone_number"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "status"
+    t.decimal "amount", precision: 10
+    t.integer "fee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

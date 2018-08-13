@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @leafe.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @leafe.end_date %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @leafe.duration %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @leafe.reason %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @leafe.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_leafe_path(@leafe) %> |
+<%= link_to 'Back', leaves_path %>

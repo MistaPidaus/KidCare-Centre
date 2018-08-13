@@ -1,0 +1,73 @@
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                My Certification   
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'My Certification', my_cert_path %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->     
+          
+      <!-- Start popular-course Area -->
+      <section class="popular-course-area section-gap">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+              <div class="title text-center">
+                <h1 class="mb-10">My Certification</h1>
+                <p>There is a moment in the life of any aspiring.</p>
+                <% if alert %>
+                <div class="alert alert-danger" role="alert"><%= alert %></div>
+              <% end %>
+              </div>
+            </div>
+          </div>            
+          <div class="row">
+            <div class="active-popular-carusel">
+              <% @user.certificates.each do |cert| %>
+              <div class="single-popular-carusel">
+                <div class="thumb-wrap relative">
+                  <div class="thumb relative">
+                    <div class="overlay overlay-bg"></div>  
+                    <%= image_tag("p1.jpg", class: "img-fluid") %>
+                  </div>                  
+                </div>
+                <div class="details">
+                  <h4>
+                    <%= cert.name %>
+                  </h4>
+
+                  <p>
+                    <%= cert.description %>                   
+                  </p>
+                </div>
+              </div>
+              <% end %>             
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End popular-course Area -->
+
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->     
+

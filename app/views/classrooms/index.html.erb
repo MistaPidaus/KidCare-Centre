@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Classroom</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                <button class="btn btn-sm btn-outline-secondary">Export</button>
+              </div>
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This week
+              </button>
+            </div>
+          </div>
+          <p id="notice"><%= notice %></p>
+
+          <table class="table table-strip">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Taska</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @classrooms.each do |classroom| %>
+                <tr>
+                  <td><%= classroom.name %></td>
+                  <td><%= classroom.taska_id %></td>
+                  <td><%= link_to 'Show', classroom %></td>
+                  <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+                  <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <br>
+
+          <%= link_to 'New Classroom', new_classroom_path %>

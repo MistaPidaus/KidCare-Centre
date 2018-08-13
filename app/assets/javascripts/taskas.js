@@ -11,17 +11,4 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require college/vendor/jquery-2.2.4.min
-//= require college/popper.min.js
-//= require college/vendor/bootstrap.min
-//= require college/easing.min
-//= require college/hoverIntent
-//= require college/superfish.min
-//= require college/jquery.ajaxchimp.min.js
-//= require college/jquery.magnific-popup.min.js
-//= require college/jquery.tabs.min.js
-//= require college/jquery.nice-select.min.js
-//= require college/owl.carousel.min.js
-//= require college/mail-script.js
-//= require college/main
-//= require_tree ./college
+//= require_tree ./taskas

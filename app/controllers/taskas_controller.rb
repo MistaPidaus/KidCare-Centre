@@ -1,5 +1,6 @@
 class TaskasController < ApplicationController
   before_action :set_taska, only: [:show, :edit, :update, :destroy]
+  layout 'taska'
 
   # GET /taskas
   # GET /taskas.json

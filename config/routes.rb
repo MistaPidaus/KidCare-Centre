@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get 'my_cert', to: 'my_cert#index'
+
+  resources :classrooms
+  resources :transactions
+  resources :fees
+  resources :leaves
+  get 'locations/index'
+
+  get 'locations/show'
+
   resources :certificates
   get 'my_course', to: 'my_course#index'
   get 'my_course/:id', to: 'my_course#show', as: 'view_mycourse'
