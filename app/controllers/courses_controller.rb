@@ -22,8 +22,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    authorize! :create, @course
     @course = Course.new
+    authorize! :create, @course
   end
 
   # GET /courses/1/edit
@@ -36,6 +36,7 @@ class CoursesController < ApplicationController
   def create
     authorize! :create, @course
     @course = Course.new(course_params)
+    @course.user_id = current_user.id if current_user
 
     respond_to do |format|
       if @course.save

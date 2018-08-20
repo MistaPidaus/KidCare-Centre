@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  
+
+  namespace :instructor do
+    root 'dashboard#index'
+    get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+    resources :courses, except: :index
+    resources :units, except: :index
+    resources :assignments, except: :index
+    get 'assignments/new/:id', to: 'assignments#new', as: 'new_assignment'
+  end
+
   get 'my_cert', to: 'my_cert#index'
 
   resources :classrooms
-  resources :transactions
-  resources :fees
-  resources :leaves
   get 'locations/index'
 
   get 'locations/show'
@@ -18,7 +24,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   devise_for :users
-  resources :taskas
   resources :assignment_marks
   resources :assignments
   resources :courses do 

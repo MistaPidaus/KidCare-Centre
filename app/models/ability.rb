@@ -28,14 +28,20 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-        user ||= User.new
+    #user ||= User.new #guest
+
+        #Crud Action
+        alias_action :create, :read, :update, :destroy, to: :crud
 
         can :read, :all
         if user.present? 
-            can :create, Assignment, user_id: user.id
-        else 
-            if user.has_role? :admin
-                can :manage, :all
+            can :crud, AssignmentMark, user_id: user.id
+            if user.has_role? :instructor
+                can :crud, [Course, Unit, Assignment, AssignmentMark]
+            else 
+                if user.has_role? :admin
+                    can :manage, :all
+                end
             end
         end
     end

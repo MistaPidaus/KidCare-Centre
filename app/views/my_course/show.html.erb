@@ -30,11 +30,11 @@
 				    Units
 				  </div>
 				  <div class="card-body">
-				  	<% @myunits.each do |unit| %>
+				  	<% @current_course.unit.each do |unit| %>
 				    <h5 class="card-title"><%= unit["title"] %></h5>
 				    <p class="card-text"><%= unit["description"] %></p>
 				    <% unit.attachment.each do |attach| %>
-				    	<p><%= link_to "Notes", attach.url %></p>
+				    	<p><%= link_to File.basename(attach.url), attach.url %></p>
 				    <% end %>
 				    <hr>
 				    <% end %>
@@ -52,19 +52,16 @@
 				    Assignment
 				  </div>
 				  <div class="card-body">
-				  	<% @myunits.each do |unit| %>
-					  	<% unit.assignment.each do |assignment| %>
+				  	<% @current_course.assignment.each do |assignment| %>
 					    <h5 class="card-title"><%= assignment["title"] %></h5>
 					    <p class="card-text"><%= assignment["description"] %></p>
-					    <% assignment.file.each do |file| %>
-					    	<p><%= link_to "Assignment", file.url %></p>
-					    <% end %>
+					    <% assignment.assignment_file.each do |file| %>
+					    	<p><%= link_to File.basename(file.url), file.url %></p>
 					<% end %>
 				    <hr>
 				    <% end %>
 				  </div>
 				</div>
-				<%= link_to "Award Myself", award_path(:course_id => @current_course.id, :certificate_id => @current_course.certificate.id), :method => :post, :class => 'primary-btn text-uppercase' %> 
           	</div>
           </div>
         </div>  

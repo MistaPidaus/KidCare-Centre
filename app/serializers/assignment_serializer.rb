@@ -1,4 +1,4 @@
 class AssignmentSerializer < ActiveModel::Serializer
-  attributes :id, :title, :file, :description, :unit_id
-  belongs_to :unit
+  attributes :id, :title, :assignment_file, :description, :course_id
+  belongs_to :course
 end

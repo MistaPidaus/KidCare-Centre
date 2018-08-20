@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
@@ -70,6 +71,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:title, {file: []}, :description, :unit_id)
+      params.require(:assignment).permit(:title, {file: []}, :description, :course_id)
     end
 end

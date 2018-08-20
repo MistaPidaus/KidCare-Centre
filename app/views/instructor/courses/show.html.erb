@@ -1,0 +1,374 @@
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @current_course.title %>
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Courses', courses_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to @current_course.title, course_path %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
+
+<!-- Start course-details Area -->
+			<section class="course-details-area pt-120">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<% if notice %>
+				                <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+				            <% end %>
+				            <% if alert %>
+				                <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+				            <% end %>
+				        </div>
+
+				        <!-- Buttons -->
+				        
+				        	<div class="col-md-4">
+					        <%= link_to "Edit Course", edit_instructor_course_path(@current_course), class: "btn btn-primary mb-10" %>
+					   		</div>
+					   		<div class="col-md-4">
+		            		<%= link_to "Create Unit", new_instructor_unit_path, class: "btn btn-primary mb-10" %>
+		            		</div>
+		            		<div class="col-md-4">
+		            		<%= link_to "Create Assignment", new_instructor_assignment_path, class: "btn btn-primary mb-10" %>
+		            		</div>
+
+						<div class="col-lg-12 left-contents">
+							<div class="jq-tab-wrapper" id="horizontalTab">
+	                            <div class="jq-tab-menu">
+	                                <div class="jq-tab-title active" data-tab="1">Units</div>
+	                                <div class="jq-tab-title" data-tab="2">Assignment</div>
+	                                <div class="jq-tab-title" data-tab="3">Pending Assignment Review</div>
+	                                <div class="jq-tab-title" data-tab="4">Quiz</div>
+	                                <div class="jq-tab-title" data-tab="5">Reviews</div>
+	                            </div>
+	                            <div class="jq-tab-content-wrapper">
+	                                <div class="jq-tab-content active" data-tab="1">
+	                                    <% @current_course.unit.each do |unit| %>
+	                                    	<h4><%= unit["title"] %></h4>
+
+	                                    	<%= link_to "Edit Unit", edit_instructor_unit_path(unit), class: "btn btn-primary float-right" %>
+
+	                                    	<p><%= unit["description"] %></p>
+
+	                                    	<% unit.attachment.each do |attach| %>
+										    	<p><%= link_to File.basename(attach.url), attach.url %></p>
+										    <% end %>
+										    <hr>
+	                                    <% end %>
+	                                </div>
+	                                <div class="jq-tab-content" data-tab="2">
+									        <% @current_course.assignment.each do |assignment| %>
+									        <%= link_to "Edit Assignment", edit_instructor_assignment_path(assignment), class: "btn btn-primary float-right" %>
+										    	<p>Title: <%= assignment.title %></p>
+										    	<p>Description: <%= assignment.description %></p>
+
+										    	<% assignment.assignment_file.each do |attachment| %>
+										    		<p><%= link_to File.basename(attachment.url), attachment.url %></p>
+										    	<% end %>
+										    	<hr>
+										    <% end %>
+	                                </div>
+	                                <div class="jq-tab-content" data-tab="3">
+										<ul class="course-list">
+											<li class="justify-content-between d-flex">
+												<p>Introduction Lesson</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Basics of HTML</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Getting Know about HTML</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Tags and Attributes</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Basics of CSS</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Getting Familiar with CSS</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Introduction to Bootstrap</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>																		
+											<li class="justify-content-between d-flex">
+												<p>Responsive Design</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+											<li class="justify-content-between d-flex">
+												<p>Canvas in HTML 5</p>
+												<a class="primary-btn text-uppercase" href="#">View Details</a>
+											</li>
+
+										</ul>
+	                                </div>
+	                                <div class="jq-tab-content comment-wrap" data-tab="4">
+						                <div class="comments-area">
+						                    <h4>05 Comments</h4>
+						                    <div class="comment-list">
+						                        <div class="single-comment justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c1.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Emilly Blunt</a></h5>
+						                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+						                                    <p class="comment">
+						                                        Never say goodbye till the end comes!
+						                                    </p>
+						                                </div>
+						                            </div>
+						                            <div class="reply-btn">
+						                                   <a href="" class="btn-reply text-uppercase">reply</a> 
+						                            </div>
+						                        </div>
+						                    </div>  
+						                    <div class="comment-list left-padding">
+						                        <div class="single-comment justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c2.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Elsie Cunningham</a></h5>
+						                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+						                                    <p class="comment">
+						                                        Never say goodbye till the end comes!
+						                                    </p>
+						                                </div>
+						                            </div>
+						                            <div class="reply-btn">
+						                                   <a href="" class="btn-reply text-uppercase">reply</a> 
+						                            </div>
+						                        </div>
+						                    </div>   
+						                    <div class="comment-list">
+						                        <div class="single-comment justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c4.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Maria Luna</a></h5>
+						                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+						                                    <p class="comment">
+						                                        Never say goodbye till the end comes!
+						                                    </p>
+						                                </div>
+						                            </div>
+						                            <div class="reply-btn">
+						                                   <a href="" class="btn-reply text-uppercase">reply</a> 
+						                            </div>
+						                        </div>
+						                    </div>                                                    
+						                </div>
+						                <div class="comment-form">
+						                    <h4>Leave a Comment</h4>
+						                    <form>
+						                        <div class="form-group form-inline">
+						                          <div class="form-group col-lg-6 col-md-12 name">
+						                            <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+						                          </div>
+						                          <div class="form-group col-lg-6 col-md-12 email">
+						                            <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+						                          </div>                                        
+						                        </div>
+						                        <div class="form-group">
+						                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+						                        </div>
+						                        <div class="form-group">
+						                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+						                        </div>
+						                        <a href="#" class="mt-40 text-uppercase genric-btn primary text-center">Post Comment</a> 
+						                    </form>
+						                </div>     						                
+	                                </div>
+	                                <div class="jq-tab-content" data-tab="5">	
+	                                	<div class="review-top row pt-40">
+	                                		<div class="col-lg-3">
+	                                			<div class="avg-review">
+	                                				Average <br>
+	                                				<span>5.0</span> <br>
+	                                				(3 Ratings)
+	                                			</div>
+	                                		</div>
+	                                		<div class="col-lg-9">
+	                                			<h4 class="mb-20">Provide Your Rating</h4>
+	                                			<div class="d-flex flex-row reviews">
+	                                				<span>Quality</span>
+													<div class="star">
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+	                                				<span>Outstanding</span>
+	                                			</div>
+	                                			<div class="d-flex flex-row reviews">
+	                                				<span>Puncuality</span>
+													<div class="star">
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+	                                				<span>Outstanding</span>
+	                                			</div>
+	                                			<div class="d-flex flex-row reviews">
+	                                				<span>Quality</span>
+													<div class="star">
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star checked"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+	                                				<span>Outstanding</span>
+	                                			</div>
+	                                		</div>
+	                                	</div>
+	                                	<div class="feedeback">
+	                                		<h4 class="pb-20">Your Feedback</h4>
+	                                		<textarea name="feedback" class="form-control" cols="10" rows="10"></textarea>
+	                                		<a href="#" class="mt-20 primary-btn text-right text-uppercase">Submit</a>
+	                                	</div>
+						                <div class="comments-area mb-30">
+						                    <div class="comment-list">
+						                        <div class="single-comment single-reviews justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c1.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Emilly Blunt</a>
+															<div class="star">
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star"></span>
+																<span class="fa fa-star"></span>
+															</div>
+						                                    </h5>
+						                                    <p class="comment">
+						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
+						                                    </p>
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>  
+						                    <div class="comment-list">
+						                        <div class="single-comment single-reviews justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c2.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Elsie Cunningham</a>
+															<div class="star">
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star"></span>
+																<span class="fa fa-star"></span>
+															</div>
+						                                    </h5>
+						                                    <p class="comment">
+						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
+						                                    </p>
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>   
+						                    <div class="comment-list">
+						                        <div class="single-comment single-reviews justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c3.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Maria Luna</a>
+															<div class="star">
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star"></span>
+																<span class="fa fa-star"></span>
+															</div>
+						                                    </h5>
+						                                    <p class="comment">
+						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
+						                                    </p>
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>  
+						                    <div class="comment-list">
+						                        <div class="single-comment single-reviews justify-content-between d-flex">
+						                            <div class="user justify-content-between d-flex">
+						                                <div class="thumb">
+						                                    <img src="img/blog/c4.jpg" alt="">
+						                                </div>
+						                                <div class="desc">
+						                                    <h5><a href="#">Maria Luna</a>
+															<div class="star">
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star checked"></span>
+																<span class="fa fa-star"></span>
+																<span class="fa fa-star"></span>
+															</div>
+						                                    </h5>
+						                                    <p class="comment">
+						                                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ut sed, dolorum asperiores perspiciatis provident, odit maxime doloremque aliquam.
+						                                    </p>
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>  						                                                                      
+						                </div>	                                	
+	                                </div>                                
+	                            </div>
+	                        </div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End course-details Area -->
+      
+
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     
