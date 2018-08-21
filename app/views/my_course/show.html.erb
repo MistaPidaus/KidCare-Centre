@@ -57,6 +57,8 @@
 					    <p class="card-text"><%= assignment["description"] %></p>
 					    <% assignment.assignment_file.each do |file| %>
 					    	<p><%= link_to File.basename(file.url), file.url %></p>
+
+                <%= link_to "View Submission", assignment_path(assignment), class: "btn btn-primary" %>
 					<% end %>
 				    <hr>
 				    <% end %>

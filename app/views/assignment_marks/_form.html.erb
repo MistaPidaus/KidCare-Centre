@@ -11,27 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group ">
     <%= form.label :file %>
-    <%= form.file_field :file, id: :assignment_mark_file %>
+    <%= form.file_field :file, autofocus: true, required: true, multiple: true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :marks %>
-    <%= form.text_field :marks, id: :assignment_mark_marks %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :assignment_mark_user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :assignment_id %>
-    <%= form.number_field :assignment_id, id: :assignment_mark_assignment_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-md-4">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

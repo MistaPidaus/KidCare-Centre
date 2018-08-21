@@ -1,5 +1,5 @@
 class AssignmentMarksController < ApplicationController
-  before_action :set_assignment_mark, only: [:show, :edit, :update, :destroy]
+  before_action :set_assignment_mark, only: [:edit, :update, :destroy]
 
   # GET /assignment_marks
   # GET /assignment_marks.json
@@ -10,11 +10,19 @@ class AssignmentMarksController < ApplicationController
   # GET /assignment_marks/1
   # GET /assignment_marks/1.json
   def show
+    #@assignment = Assignment.find(1)
+    #user = User.find(1)
+    #render json: @assignment
+    #render json: current_user.assignment_marks
+    @submission = current_user.assignment_marks.find_by(assignment_id: params[:id])
+    @assignment = Assignment.find(params[:id])
+    #render json: @submission
   end
 
   # GET /assignment_marks/new
   def new
     @assignment_mark = AssignmentMark.new
+    @assignment = Assignment.find(params[:id])
   end
 
   # GET /assignment_marks/1/edit

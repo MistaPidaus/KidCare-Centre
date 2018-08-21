@@ -12,6 +12,9 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    #render json: @assignment
+    #@submission = @assignment.assignment_marks.where(user_id: current_user)
+    @submission = current_user.assignment_mark
   end
 
   # GET /assignments/new

@@ -18,14 +18,10 @@ class MyCourseController < ApplicationController
   	user = current_user
 	course = user.courses.find_by_id(params[:id])
 
-	#if user.has_role? :instructor
-		#course = user.created.find_by_id(params[:id])
 		if course.present? 
-			#unit = Unit.all
 			@current_course = course
-			#@myunits = course.unit
-
-			#render json: @current_course
+			#render json: user.assignment_marks.where(assignment_id: 1)
+			@assignment_marks = user.assignment_marks
 		else
 			if course.blank?
 				redirect_to my_course_path, alert: 'You are not enroll in the course.'
