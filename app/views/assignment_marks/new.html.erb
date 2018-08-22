@@ -7,7 +7,7 @@
               <h1 class="text-white">
                 
               </h1> 
-              <%= link_to 'Courses', courses_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'd', root_path %>
+              <%= link_to @assignment.title, view_mycourse_path(@assignment) %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Add new submission', new_assignment_mark_path %>
             </div>  
           </div>
         </div>

@@ -21,7 +21,7 @@ class MyCourseController < ApplicationController
 		if course.present? 
 			@current_course = course
 			#render json: user.assignment_marks.where(assignment_id: 1)
-			@assignment_marks = user.assignment_marks
+			@assignment_marks = user.assignment_mark
 		else
 			if course.blank?
 				redirect_to my_course_path, alert: 'You are not enroll in the course.'

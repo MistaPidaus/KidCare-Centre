@@ -13,8 +13,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1.json
   def show
     #render json: @assignment
-    #@submission = @assignment.assignment_marks.where(user_id: current_user)
-    @submission = current_user.assignment_mark
+    @user_assignment = @assignment.assignment_marks.find_by(user_id: current_user, assignment_id: params[:id])
+    #@submission = current_user.assignment_mark
   end
 
   # GET /assignments/new
@@ -74,6 +74,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:title, {file: []}, :description, :course_id)
+      params.require(:assignment).permit(:title, {assignment_file: []}, :description, :course_id)
     end
 end

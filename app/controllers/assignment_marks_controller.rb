@@ -15,14 +15,16 @@ class AssignmentMarksController < ApplicationController
     #render json: @assignment
     #render json: current_user.assignment_marks
     @submission = current_user.assignment_marks.find_by(assignment_id: params[:id])
-    @assignment = Assignment.find(params[:id])
+    if @submission.blank?
+    #@assignment = Assignment.find_by(params[:id])
     #render json: @submission
+    end
   end
 
   # GET /assignment_marks/new
   def new
-    @assignment_mark = AssignmentMark.new
-    @assignment = Assignment.find(params[:id])
+    @assignment_mark = AssignmentMark.new(assignment_id: params[:assignment])
+    @assignment = Assignment.find(params[:assignment])
   end
 
   # GET /assignment_marks/1/edit
@@ -36,7 +38,7 @@ class AssignmentMarksController < ApplicationController
 
     respond_to do |format|
       if @assignment_mark.save
-        format.html { redirect_to @assignment_mark, notice: 'Assignment mark was successfully created.' }
+        format.html { redirect_to assignment_path(params[:assignment]), notice: 'Assignment mark was successfully created.' }
         format.json { render :show, status: :created, location: @assignment_mark }
       else
         format.html { render :new }
@@ -50,7 +52,7 @@ class AssignmentMarksController < ApplicationController
   def update
     respond_to do |format|
       if @assignment_mark.update(assignment_mark_params)
-        format.html { redirect_to @assignment_mark, notice: 'Assignment mark was successfully updated.' }
+        format.html { redirect_to assignment_path(params[:assignment]), notice: 'Assignment mark was successfully updated.' }
         format.json { render :show, status: :ok, location: @assignment_mark }
       else
         format.html { render :edit }
@@ -64,7 +66,7 @@ class AssignmentMarksController < ApplicationController
   def destroy
     @assignment_mark.destroy
     respond_to do |format|
-      format.html { redirect_to assignment_marks_url, notice: 'Assignment mark was successfully destroyed.' }
+      format.html { redirect_to assignment_path(params[:assignment]), notice: 'Assignment mark was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,6 +79,6 @@ class AssignmentMarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_mark_params
-      params.require(:assignment_mark).permit(:file, :marks, :user_id, :assignment_id)
+      params.require(:assignment_mark).permit(:marks, :user_id, {file: []}, :assignment_id)
     end
 end
