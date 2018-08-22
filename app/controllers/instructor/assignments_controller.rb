@@ -3,6 +3,10 @@ class Instructor::AssignmentsController < ApplicationController
   before_action :check_permission
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
+  def show 
+    @submission = @assignment.assignment_marks.where(marks: [nil, ""]).where.not(file: [nil, ""])
+  end
+
   def create
     @assignment = Assignment.new(assignment_params)
 

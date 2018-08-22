@@ -1,5 +1,5 @@
 class AssignmentSerializer < ActiveModel::Serializer
-  attributes :id, :title, :assignment_file, :description, :course_id
+  attributes :id, :title, :assignment_file, :description, :total_score, :course_id
   belongs_to :course
   has_many :assignment_marks
 

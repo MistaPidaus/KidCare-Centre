@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :units, except: :index
     resources :assignments, except: :index
     get 'assignments/new/:id', to: 'assignments#new', as: 'new_assignment'
+    resources :assignment_marks
   end
 
   get 'my_cert', to: 'my_cert#index'

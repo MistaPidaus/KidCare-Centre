@@ -12,10 +12,14 @@ class Instructor::CoursesController < ApplicationController
       #unit = Unit.all
       @current_course = Course.find(params[:id])
       @myunits = course
+      assignment = @current_course.assignment
+      #render json: submission = assignment.assignment_mark
+
+
       #render json: @myunits
       #render json: @myunits
 
-      #render json: course.unit
+      #render json: @current_course.assignment
     else
       if course.blank?
         redirect_to my_course_path, alert: 'You are not enroll in the course.'

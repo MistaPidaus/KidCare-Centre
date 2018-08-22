@@ -15,10 +15,10 @@ class AssignmentMarksController < ApplicationController
     #render json: @assignment
     #render json: current_user.assignment_marks
     @submission = current_user.assignment_marks.find_by(assignment_id: params[:id])
-    if @submission.blank?
+    #if @submission.blank?
     #@assignment = Assignment.find_by(params[:id])
     #render json: @submission
-    end
+    #end
   end
 
   # GET /assignment_marks/new
@@ -29,6 +29,7 @@ class AssignmentMarksController < ApplicationController
 
   # GET /assignment_marks/1/edit
   def edit
+    @assignment = Assignment.find(params[:assignment])
   end
 
   # POST /assignment_marks

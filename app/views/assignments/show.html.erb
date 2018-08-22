@@ -59,7 +59,7 @@
 				</div>
 
 
-				<%= link_to 'Edit', edit_assignment_mark_path(@assignment), class: "btn btn-primary" if @user_assignment.present? %>
+				<%= link_to 'Edit', edit_assignment_mark_path(assignment: @assignment), class: "btn btn-primary" if @user_assignment.present? %>
 
 				<%= link_to 'Add new submission', new_assignment_mark_path(assignment: @assignment), class: "btn btn-primary" if @user_assignment.blank? %>
 
