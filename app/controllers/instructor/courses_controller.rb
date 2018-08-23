@@ -28,9 +28,9 @@ class Instructor::CoursesController < ApplicationController
   end
 
   def create
-    authorize! :create, @course
     @course = Course.new(course_params)
-    @course.user_id = current_user.id if current_user
+    @course.creator_id = current_user.id if current_user
+    authorize! :create, @course
 
     respond_to do |format|
       if @course.save

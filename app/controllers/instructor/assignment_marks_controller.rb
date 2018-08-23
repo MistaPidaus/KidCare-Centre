@@ -2,6 +2,7 @@ class Instructor::AssignmentMarksController < ApplicationController
   before_action :authenticate_user!
   before_action :check_permission
   before_action :set_assignment_mark, only: [:edit, :update]
+  #after_save :check_qualification
 
   def show
   end

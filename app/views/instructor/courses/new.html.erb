@@ -23,7 +23,7 @@
               <h2>Create Course</h2>
 
               
-              <%= form_with(model: course, url: instructor_courses_path, local: true) do |form| %>
+              <%= form_with(model: @course, url: instructor_courses_path, local: true) do |form| %>
 
               <% if @course.errors.any? %>
                   <div id="error_explanation">

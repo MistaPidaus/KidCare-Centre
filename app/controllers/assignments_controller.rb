@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignments = Assignment.all
-    #render json: @assignments
+    render json: current_user.assignment_mark
   end
 
   # GET /assignments/1
