@@ -5,7 +5,7 @@
           <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
               <h1 class="text-white">
-                
+                <%= @assignment_mark.assignment.title %>
               </h1> 
               <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Grade Submission', edit_instructor_assignment_mark_path(@assignment_mark) %></p>
             </div>  
@@ -43,14 +43,21 @@
               <h4 class="mt-10 mb-10">Submitted File(s):</h4>  
               <div class="form-group ">
                 <% @assignment_mark.file.each do |file| %>
-                	<p><%= link_to File.basename(file.url), file.url %></p>
+                	<p><span class="fa fa-file"></span> <%= link_to File.basename(file.url), file.url %></p>
                 <% end %>
               </div>
+              <hr>
 
-              <div class="form-group ">
-                <%= form.label :total_score %>
-                <%= form.number_field :total_score, autofocus: true, required: true, min: 1, max: 100, class: "form-control", placeholder: "Input Score" %>
-                <%= @assignment_mark.assignment.total_score %>
+              <div class="form-group input-group">
+                <%= form.label :marks, class: "col-sm-4 col-form-label" %>
+                <%= form.number_field :marks, autofocus: true, required: true, min: 1, max: @assignment_mark.assignment.total_score, class: "form-control", placeholder: "Input Score" %>
+                <div class="input-group-append">
+				  <span class="input-group-text">/<%= @assignment_mark.assignment.total_score %></span>
+				</div>
+				<div class="col-md-6">
+
+				<small class="form-text text-muted">Limit score marks: <%= @assignment_mark.assignment.total_score %></small>
+				</div>
               </div>
 
               <div class="row">

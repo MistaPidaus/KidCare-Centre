@@ -28,7 +28,7 @@
 	           
 	            <h1><%= @assignment.title %></h1>
 	            <% @assignment.assignment_file.each do |file| %>
-                <%= link_to File.basename(file.url), file.url %>
+                <p><span class="fa fa-file"></span> <%= link_to File.basename(file.url), file.url %></p>
               <% end %>
 
             <div class="section-top-border">

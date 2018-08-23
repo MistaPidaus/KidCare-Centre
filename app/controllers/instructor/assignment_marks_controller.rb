@@ -12,7 +12,7 @@ class Instructor::AssignmentMarksController < ApplicationController
   def update
     respond_to do |format|
       if @assignment_mark.update(assignment_mark_params)
-        format.html { redirect_to assignment_path(params[:assignment]), notice: 'Assignment mark was successfully updated.' }
+        format.html { redirect_to instructor_assignment_path(@assignment_mark.assignment), notice: 'Assignment mark was successfully updated.' }
         format.json { render :show, status: :ok, location: @assignment_mark }
       else
         format.html { render :edit }
