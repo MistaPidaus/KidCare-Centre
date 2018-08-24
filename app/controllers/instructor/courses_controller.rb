@@ -27,14 +27,19 @@ class Instructor::CoursesController < ApplicationController
     end
   end
 
-  def create
+def create
     @course = Course.new(course_params)
     @course.creator_id = current_user.id if current_user
     authorize! :create, @course
-    @certificate = Certificate.new(:name => @course.name, :description => @course.description, :file, :course_id => @course.id)
 
     respond_to do |format|
-      if @course.save && @certificate.save
+      if @course.save
+        @certificate = Certificate.new
+        @certificate.name = @course.title
+        @certificate.description = @course.description
+        @certificate.course_id = @course.id
+        @certificate.save
+        
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -46,10 +51,14 @@ class Instructor::CoursesController < ApplicationController
 
   def update
     authorize! :update, @course
-    @certificate = Certificate.find(params[:id])
-    cert_params = (:name => @course.name, :description => @course.description, :file, :course_id => @course.id)
     respond_to do |format|
-      if @course.update(course_params) && @certificate.update(cert_params)
+      if @course.update(course_params)
+        @certificate = Certificate.find(params[:id])
+        @certificate.name = @course.title
+        @certificate.description = @course.description
+        @certificate.course_id = @course.id
+        @certificate.update
+
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
