@@ -80,12 +80,13 @@ class CoursesController < ApplicationController
     user = current_user
     course = Course.find(params[:course_id])
 
-    #Lets do magic
-    if course.users.count == 0
+    check_enrol = user.courses.include?(course)
+
+    if check_enrol.present?
+      flash[:alert] = 'You already enrolled in this course'
+    else 
       user.courses << course 
       flash[:notice] = 'You have successfully enrolled to this course'
-    else 
-      flash[:alert] = 'You already enrolled in this course'
     end
       redirect_to view_mycourse_path(course)
   end
