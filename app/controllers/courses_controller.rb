@@ -80,15 +80,19 @@ class CoursesController < ApplicationController
     user = current_user
     course = Course.find(params[:course_id])
 
-    check_enrol = user.courses.include?(course)
-
-    if check_enrol.present?
-      flash[:alert] = 'You already enrolled in this course'
-    else 
-      user.courses << course 
-      flash[:notice] = 'You have successfully enrolled to this course'
-    end
-      redirect_to view_mycourse_path(course)
+    if course.published
+      check_enrol = user.courses.include?(course)
+        if check_enrol.present?
+          flash[:alert] = 'You already enrolled in this course'
+        else 
+          user.courses << course 
+          flash[:notice] = 'You have successfully enrolled to this course'
+        end
+          redirect_to view_mycourse_path(course)
+      else
+        flash[:alert] = 'The course is not available'
+        redirect_to my_course_path
+      end
   end
 
   private
