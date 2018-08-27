@@ -44,8 +44,7 @@
 	                            <div class="jq-tab-menu">
 	                                <div class="jq-tab-title active" data-tab="1">Units</div>
 	                                <div class="jq-tab-title" data-tab="2">Assignment</div>
-	                                <div class="jq-tab-title" data-tab="3">Pending Assignment Review</div>
-	                                <div class="jq-tab-title" data-tab="4">Quiz</div>
+	                                <div class="jq-tab-title" data-tab="3">Quiz</div>
 	                            </div>
 	                            <div class="jq-tab-content-wrapper">
 	                                <div class="jq-tab-content active" data-tab="1">
@@ -64,7 +63,7 @@
 	                                </div>
 	                                <div class="jq-tab-content" data-tab="2">
 									        <% @current_course.assignment.each do |assignment| %>
-									        <%= link_to "Edit Assignment", edit_instructor_assignment_path(assignment), class: "btn btn-primary float-right" %>
+									        <%= link_to "View Assignment", instructor_assignment_path(assignment), class: "btn btn-primary float-right" %>
 										    	<p>Title: <%= link_to assignment.title, instructor_assignment_path(assignment) %></p>
 										    	<p>Description: <%= assignment.description %></p>
 
@@ -74,15 +73,7 @@
 										    	<hr>
 										    <% end %>
 	                                </div>
-	                                <div class="jq-tab-content" data-tab="3">
-										<ul class="course-list">
-											<li class="justify-content-between d-flex">
-												<p></p>
-												<a class="primary-btn text-uppercase" href="#">View Details</a>
-											</li>
-										</ul>
-	                                </div>
-	                                <div class="jq-tab-content comment-wrap" data-tab="4">
+	                                <div class="jq-tab-content comment-wrap" data-tab="3">
 						                <div class="comments-area">
 						                    <h4>05 Comments</h4>
 						                    <div class="comment-list">

@@ -30,6 +30,7 @@
 	            <% @assignment.assignment_file.each do |file| %>
                 <p><span class="fa fa-file"></span> <%= link_to File.basename(file.url), file.url %></p>
               <% end %>
+              <%= link_to "Edit Assignment", edit_instructor_assignment_path(@assignment), class: "btn btn-primary mb-10" %>
 
             <div class="section-top-border">
             <h3 class="mb-30">Submission</h3>
