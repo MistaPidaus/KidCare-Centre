@@ -4,15 +4,16 @@ class Instructor::AssignmentMarksController < ApplicationController
   before_action :set_assignment_mark, only: [:edit, :update]
   #after_save :check_qualification
 
-  def show
-  end
-
   def edit
   end
 
   def update
     respond_to do |format|
       if @assignment_mark.update(assignment_mark_params)
+
+      	#check qualification for user
+      	check_qualification(@assignment_mark.user_id, @assignment_mark.assignment.course_id)
+
         format.html { redirect_to instructor_assignment_path(@assignment_mark.assignment), notice: 'Assignment mark was successfully updated.' }
         format.json { render :show, status: :ok, location: @assignment_mark }
       else
@@ -32,4 +33,23 @@ class Instructor::AssignmentMarksController < ApplicationController
     def assignment_mark_params
       params.require(:assignment_mark).permit(:marks)
     end
+
+    def check_qualification(a, b)
+    	user = User.find(a)
+    	assignment_id = user.assignment_mark.pluck(:assignment_id)
+
+    	#render json: course = Course.find(assignment_id: assignment_id)
+  	
+	  	marks = user.assignment_mark.sum(:marks).to_f
+
+	  	assignment = Assignment.where(id: assignment_id, course_id: b)
+	  	total_score = assignment.sum(:total_score).to_f
+
+	  	calculation = (((marks / total_score * 100) * 100) / 100).round(2)
+
+	  	if calculation >= 80
+	  		certificate = Certificate.find(b) #lets assume that the cert id same as course id
+	  		user.certificates << certificate
+	  end
+
 end

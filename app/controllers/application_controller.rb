@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_qualification
-    assignments = current_user.assignments_mark
+    
   end
 end

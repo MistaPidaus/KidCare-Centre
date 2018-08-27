@@ -107,9 +107,12 @@
               <div class="title text-center">
                 <h1 class="mb-10">My Course</h1>
                 <p>There is a moment in the life of any aspiring.</p>
+                <% if notice %>
+                  <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+                <% end %>
                 <% if alert %>
-                <div class="alert alert-danger" role="alert"><%= alert %></div>
-              <% end %>
+                  <div class="alert alert-danger" role="alert"><%= alert %></div>
+                <% end %>
               </div>
             </div>
           </div>            
