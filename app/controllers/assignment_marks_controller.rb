@@ -29,17 +29,23 @@ class AssignmentMarksController < ApplicationController
   # POST /assignment_marks
   # POST /assignment_marks.json
   def create
-    @assignment_mark = AssignmentMark.new(assignment_mark_params)
-    @assignment_mark.user_id = current_user.id if current_user
-    @assignment_mark.assignment_id = params[:assignment_id]
+    @submission = AssignmentMark.find_by(user_id: current_user, assignment_id: params[:assignment_id])
 
-    respond_to do |format|
-      if @assignment_mark.save
-        format.html { redirect_to assignment_path(@assignment_mark), notice: 'Assignment mark was successfully created.' }
-        format.json { render :show, status: :created, location: @assignment_mark }
-      else
-        format.html { render :new }
-        format.json { render json: @assignment_mark.errors, status: :unprocessable_entity }
+    if @submission.present?
+      redirect_to assignment_path(params[:assignment_id]), alert: 'You already submitted your Assignment.'
+    else
+      @assignment_mark = AssignmentMark.new(assignment_mark_params)
+      @assignment_mark.user_id = current_user.id if current_user
+      @assignment_mark.assignment_id = params[:assignment_id]
+
+      respond_to do |format|
+        if @assignment_mark.save
+          format.html { redirect_to assignment_path(@assignment_mark), notice: 'Assignment mark was successfully created.' }
+          format.json { render :show, status: :created, location: @assignment_mark.assignment_id }
+        else
+          format.html { render :new }
+          format.json { render json: @assignment_mark.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

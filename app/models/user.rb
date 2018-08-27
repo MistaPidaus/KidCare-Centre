@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_and_belongs_to_many :certificates
   has_and_belongs_to_many :colleges
   has_many :created, class_name: 'Course', foreign_key: 'creator_id'
-  has_one :assignment_mark
+  has_many :assignment_mark
 end
