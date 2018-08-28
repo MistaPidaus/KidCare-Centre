@@ -2,7 +2,6 @@ class Instructor::AssignmentMarksController < ApplicationController
   before_action :authenticate_user!
   before_action :check_permission
   before_action :set_assignment_mark, only: [:edit, :update]
-  #after_save :check_qualification
 
   def edit
   end
@@ -35,21 +34,23 @@ class Instructor::AssignmentMarksController < ApplicationController
     end
 
     def check_qualification(a, b)
+    	#find user
     	user = User.find(a)
-    	assignment_id = user.assignment_mark.pluck(:assignment_id)
+    	#Collect user assignment mark and assignment total score data
+    	data = user.assignment_mark.joins(:assignment).select('assignment_marks.id, assignment_marks.marks, assignment_marks.assignment_id, assignment_marks.user_id, assignments.id, assignments.total_score').where("assignments.course_id = ?", b)
 
-    	#render json: course = Course.find(assignment_id: assignment_id)
-  	
-	  	marks = user.assignment_mark.sum(:marks).to_f
+    	#get required data
+    	marks = data.sum(:marks).to_f
+    	total_score = data.sum(:total_score).to_f
 
-	  	assignment = Assignment.where(id: assignment_id, course_id: b)
-	  	total_score = assignment.sum(:total_score).to_f
-
+    	#do calculation
 	  	calculation = (((marks / total_score * 100) * 100) / 100).round(2)
 
+	  	#check passing mark, award cert
 	  	if calculation >= 80
 	  		certificate = Certificate.find(b) #lets assume that the cert id same as course id
 	  		user.certificates << certificate
-	  end
+	  	end
+	end
 
 end
