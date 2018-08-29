@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     resources :assignment_marks
   end
 
-  get 'my_cert', to: 'my_cert#index'
+  #get 'my_cert', to: 'my_cert#index'
+  #get 'my_cert/:id', to: 'my_cert#show'
+
+  resources :my_cert, only: [:index, :show]
 
   resources :classrooms
   get 'locations/index'
