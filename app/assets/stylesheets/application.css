@@ -19,6 +19,7 @@
  *= require college/owl.carousel
  *= require college/jquery-ui
  *= require college/main
+ *= require quizzes
  *= require_tree ./college
  *= require_self
  */

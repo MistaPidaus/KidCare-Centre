@@ -1,2 +1,0 @@
-class Taska < ApplicationRecord
-end

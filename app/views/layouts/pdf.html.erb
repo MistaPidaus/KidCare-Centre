@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @certificates.name %></title>
+  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+</head>
+<body>
+  <div class="certificate">
+    <h1><%= @certificates.name %></h1>
+  </div>
+
+  <div class="cert-body">
+    This is to certify that <%= current_user.email %> successfully completed the <%= @certificates.course.title %> by <%= @course.college.name %> on Date
+  </div>
+</body>
+</html>

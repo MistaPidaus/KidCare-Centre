@@ -73,6 +73,12 @@
                     <span><%= @course.college.name %></span>
                   </a>
                 </li>
+                <li>
+                  <a class="justify-content-between d-flex" href="#">
+                    <p>Instructor </p>
+                    <span><%= @course.creator.email %></span>
+                  </a>
+                </li>
               </ul>
               
               <%= link_to "Enroll Course", course_enrol_path(:course_id => @course.id), :method => :post, :class => 'primary-btn text-uppercase' %>

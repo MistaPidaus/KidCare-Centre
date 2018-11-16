@@ -1,16 +1,20 @@
 class AssignmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
   def index
     @assignments = Assignment.all
-    #render json: @assignments
+    render json: current_user.assignment_mark
   end
 
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    #render json: @assignment
+    @user_assignment = @assignment.assignment_marks.find_by(user_id: current_user, assignment_id: params[:id])
+    #@submission = current_user.assignment_mark
   end
 
   # GET /assignments/new
@@ -70,6 +74,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:title, {file: []}, :description, :unit_id)
+      params.require(:assignment).permit(:title, {assignment_file: []}, :description, :course_id)
     end
 end

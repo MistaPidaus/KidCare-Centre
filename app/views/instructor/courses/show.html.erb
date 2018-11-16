@@ -1,0 +1,114 @@
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @current_course.title %>
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Courses', courses_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to @current_course.title, course_path %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
+
+<!-- Start course-details Area -->
+			<section class="course-details-area pt-120">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<% if notice %>
+				                <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+				            <% end %>
+				            <% if alert %>
+				                <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+				            <% end %>
+				        </div>
+
+				        <!-- Buttons -->
+				        
+				        	<div class="col-md-4">
+					        <%= link_to "Edit Course", edit_instructor_course_path(@current_course), class: "btn btn-primary mb-10" %>
+					   		</div>
+					   		<div class="col-md-4">
+		            		<%= link_to "Create Unit", new_instructor_unit_path, class: "btn btn-primary mb-10" %>
+		            		</div>
+		            		<div class="col-md-4">
+		            		<%= link_to "Create Assignment", new_instructor_assignment_path, class: "btn btn-primary mb-10" %>
+		            		</div>
+		            		<div class="col-md-4">
+		            		<%= link_to "Create Quiz", new_instructor_quiz_path, class: "btn btn-primary mb-10" %>
+		            		</div>
+
+						<div class="col-lg-12 left-contents">
+							<div class="jq-tab-wrapper" id="horizontalTab">
+	                            <div class="jq-tab-menu">
+	                                <div class="jq-tab-title active" data-tab="1">Units</div>
+	                                <div class="jq-tab-title" data-tab="2">Assignment</div>
+	                                <div class="jq-tab-title" data-tab="3">Quiz</div>
+	                            </div>
+	                            <div class="jq-tab-content-wrapper">
+	                                <div class="jq-tab-content active" data-tab="1">
+	                                    <% @current_course.unit.each do |unit| %>
+	                                    	<h4><%= unit["title"] %></h4>
+
+	                                    	<%= link_to "Edit Unit", edit_instructor_unit_path(unit), class: "btn btn-primary float-right" %>
+
+	                                    	<p><%= unit["description"] %></p>
+
+	                                    	<% unit.attachment.each do |attach| %>
+										    	<p><%= link_to File.basename(attach.url), attach.url %></p>
+										    <% end %>
+										    <hr>
+	                                    <% end %>
+	                                </div>
+	                                <div class="jq-tab-content" data-tab="2">
+									        <% @current_course.assignment.each do |assignment| %>
+									        <%= link_to "View Assignment", instructor_assignment_path(assignment), class: "btn btn-primary float-right" %>
+										    	<p>Title: <%= link_to assignment.title, instructor_assignment_path(assignment) %></p>
+										    	<p>Description: <%= assignment.description %></p>
+
+										    	<% assignment.assignment_file.each do |attachment| %>
+										    		<p><%= link_to File.basename(attachment.url), attachment.url %></p>
+										    	<% end %>
+										    	<hr>
+										    <% end %>
+	                                </div>
+	                                <div class="jq-tab-content comment-wrap" data-tab="3">
+						                <% @current_course.quizzes.each do |quiz| %>
+									        <%= link_to "View Quiz", instructor_quiz_path(quiz), class: "btn btn-primary float-right" %>
+										    	<p>Title: <%= link_to quiz.title, instructor_quiz_path(quiz) %></p>
+
+										    	<hr>
+										    <% end %>          
+	                                </div>                               
+	                            </div>
+	                        </div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End course-details Area -->
+      
+
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

@@ -1,6 +1,52 @@
-<h1>Editing Assignment Mark</h1>
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @assignment.title %>
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <%= link_to 'Courses', courses_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to @assignment.title, view_mycourse_path(@assignment) %></p>
+            </div>  
+          </div>
+        </div>
+      </section>  
+      <!-- End banner Area -->
 
-<%= render 'form', assignment_mark: @assignment_mark %>
+<!-- Start course-details Area -->
+      <section class="section-top-border pt-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <%= render 'layouts/messages' %>
+              <h2>Edit Submission</h2>
 
-<%= link_to 'Show', @assignment_mark %> |
-<%= link_to 'Back', assignment_marks_path %>
+				<%= render 'form', assignment_mark: @assignment_mark %>
+
+				
+
+			</div>
+          </div>
+        </div>  
+  
+      </section>			
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

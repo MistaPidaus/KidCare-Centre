@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
-  
-  get 'my_cert', to: 'my_cert#index'
+
+  resources :answers
+  resources :questions
+  namespace :instructor do
+    root 'dashboard#index'
+    get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+    resources :courses, except: :index
+    resources :units, except: :index
+    resources :assignments, except: :index
+    get 'assignments/new/:id', to: 'assignments#new', as: 'new_assignment'
+    resources :assignment_marks
+    resources :quizzes, except: :index
+  end
+
+  #get 'my_cert', to: 'my_cert#index'
+  #get 'my_cert/:id', to: 'my_cert#show'
+
+  resources :my_cert, only: [:index, :show]
 
   resources :classrooms
-  resources :transactions
-  resources :fees
-  resources :leaves
   get 'locations/index'
 
   get 'locations/show'
@@ -18,7 +31,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   devise_for :users
-  resources :taskas
   resources :assignment_marks
   resources :assignments
   resources :courses do 
@@ -26,6 +38,10 @@ Rails.application.routes.draw do
   end
   resources :colleges
   resources :units
+  resources :quizzes, only: :show do
+    get 'start', to: 'quizzes#start', as: 'start_quiz'
+    post 'submit', to: 'quizzes#submit', as: 'submit_quiz'
+  end
   #resources :enrols 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

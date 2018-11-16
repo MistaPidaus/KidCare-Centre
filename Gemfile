@@ -62,3 +62,8 @@ gem 'mysql2'
 
 #Awesome!
 gem "font-awesome-rails"
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'cocoon'
+gem 'simple_form'

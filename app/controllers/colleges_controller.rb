@@ -11,26 +11,27 @@ class CollegesController < ApplicationController
   # GET /colleges/1
   # GET /colleges/1.json
   def show
-    authorize! :read, @college
     @college = College.find(params[:id])
+    authorize! :read, @college
   end
 
   # GET /colleges/new
   def new
+    @college = College.new
     authorize! :create, @college
   end
 
   # GET /colleges/1/edit
   def edit
-    authorize! :edit, @college
     @college = College.find(params[:id])
+    authorize! :edit, @college
   end
 
   # POST /colleges
   # POST /colleges.json
   def create
-    authorize! :create, @college
     @college = College.new(college_params)
+    authorize! :create, @college
 
     respond_to do |format|
       if @college.save

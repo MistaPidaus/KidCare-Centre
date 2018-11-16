@@ -1,26 +1,95 @@
-<p id="notice"><%= notice %></p>
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @assignment.title %>
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Courses', courses_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to @assignment.title, view_mycourse_path(@assignment) %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @assignment.title %>
-</p>
+<!-- Start course-details Area -->
+      <section class="course-details-area pt-120">
+        <div class="container">
+          <div class="row">
+          	<div class="col-lg-12">
+          		<% if notice %>
+	                <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+	            <% end %>
+	            <% if alert %>
+	                <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+	            <% end %>
 
-<p>
-  <strong>File:</strong>
-  <%= @assignment.file %>
-</p>
+	            <h2>Assignment Submission</h2>
+	            <p>
+	            	<% @assignment.assignment_file.each do |file| %>
+	            		<p><span class="fa fa-file"></span> <%= link_to File.basename(file.url), file.url %></p>
+	            	<% end %>
+	            </p>
+	            <hr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
-</p>
+	            <div class="card mb-10 mt-10">
+				  <div class="card-header">
+				    File Submission
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  	<% if @user_assignment.present? %>
+					    <li class="list-group-item">Marks: 
+					    	<% if @user_assignment.marks.present? %>
+							  	<strong><%= @user_assignment.marks %></strong>
+							  <% else %>
+							  	<strong>Not grade yet</strong>
+							  <% end %>
+					    </li>
+					    <li class="list-group-item">File: 
+						  	<% @user_assignment.file.each do |file| %>
+						  		<%= link_to File.basename(file.url), file.url %>
+						  	<% end %>
+					  	</li>
+					<% else %>
+					<li class="list-group-item">No submission yet</li>
+					<% end %>
+				  </ul>
+				</div>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @assignment.unit_id %>
-</p>
 
-<% if current_user.has_role? :admin %>
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<% end %>
-<%= link_to 'Back', assignments_path %>
+				<%= link_to 'Edit', edit_assignment_mark_path(assignment: @assignment), class: "btn btn-primary" if @user_assignment.present? %>
+
+				<%= link_to 'Add new submission', new_assignment_mark_path(assignment: @assignment), class: "btn btn-primary" if @user_assignment.blank? %>
+
+
+				<%= link_to 'Back', view_mycourse_path(@assignment.course_id) %>
+
+          	</div>
+          </div>
+        </div>  
+
+      </section>
+      <!-- End course-details Area -->
+      
+
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

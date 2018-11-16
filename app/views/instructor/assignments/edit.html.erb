@@ -1,0 +1,111 @@
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Edit Unit', edit_instructor_assignment_path(@assignment) %></p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
+
+<!-- Start course-details Area -->
+      <section class="course-details-area pt-120">
+        <div class="container">
+          <div class="row">
+          	<div class="col-lg-12">
+          		<% if notice %>
+	                <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+	            <% end %>
+	            <% if alert %>
+	                <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+	            <% end %>
+	           
+	            <h1>Edit Unit</h1>
+	            <%= form_with(model: @assignment, url: instructor_assignment_path(params[:id]), local: true) do |form| %>
+				<% if @assignment.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+                    <ul>
+                    <% @assignment.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+              <div class="form-group ">
+                <%= form.label :title %>
+                <%= form.text_field :title, autofocus: true, required: true, class: "form-control", placeholder: "Assignment Name" %>
+              </div>
+
+              <div class="form-group ">
+                <%= form.label :description %>
+                <%= form.text_field :description, autofocus: true, required: true, class: "form-control", placeholder: "Description" %>
+              </div>
+
+              <div class="form-group ">
+                <%= form.label :assignment_file %>
+                <%= form.file_field :assignment_file, multiple: true, autofocus: true, required: true, class: "form-control" %>
+              </div>
+
+              <div class="form-group ">
+                <%= form.label :course_id, class: "control-label requiredField" %>
+                <%= form.collection_select(:course_id, current_user.created, :id, :title, {}, {class: "select form-control"}) %>
+              </div>
+
+              <div class="form-group ">
+                <%= form.label :total_score %>
+                <%= form.number_field :total_score, autofocus: true, required: true, min: 1, max: 100, class: "form-control", placeholder: "Total Score (Out of 100)" %>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <%= link_to 'Back', courses_path, class: "btn btn-secondary" %>
+                </div>
+                <div class="col-md-4">
+                  <%= form.submit "Confirm", class: "btn btn-primary" %>
+                </div>
+              </div>
+				<% end %>
+				<div class="row">
+					<div class="col-md-12 mt-30">
+						<h3>Delete Assignment</h3>
+						<p>Delete current assigment</p>
+                  <%= link_to 'Destroy', @assignment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				</div>
+
+          	</div>
+          </div>
+        </div>  
+  
+      </section>
+      <!-- End course-details Area -->
+      
+
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

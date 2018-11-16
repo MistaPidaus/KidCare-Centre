@@ -7,7 +7,7 @@
               <h1 class="text-white">
                 My Certification   
               </h1> 
-              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'My Certification', my_cert_path %></p>
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'My Certification', my_cert_index_path %></p>
             </div>  
           </div>
         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="details">
                   <h4>
-                    <%= cert.name %>
+                    <%= link_to cert.name, my_cert_path(cert.id, :format => :pdf) %>
                   </h4>
 
                   <p>

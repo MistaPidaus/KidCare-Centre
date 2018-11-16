@@ -1,0 +1,81 @@
+      <!-- start banner Area -->
+      <section class="banner-area relative about-banner" id="home"> 
+        <div class="overlay overlay-bg"></div>
+        <div class="container">       
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">
+                <%= @quiz.title %>
+              </h1> 
+              <p class="text-white link-nav"><%= link_to 'Home', root_path %>  <span class="lnr lnr-arrow-right"></span> <%= @quiz.course.title %> <span class="lnr lnr-arrow-right"></span> <%= @quiz.title %> </p>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <!-- End banner Area -->
+
+<!-- Start course-details Area -->
+      <section class="course-details-area pt-120">
+        <div class="container">
+          <div class="row">
+          	<div class="col-md-4">
+          		<% if notice %>
+	                <div class="alert alert-success text-center" role="alert"><%= notice %></div>
+	            <% end %>
+	            <% if alert %>
+	                <div class="alert alert-danger text-center" role="alert"><%= alert %></div>
+	            <% end %>
+	           
+	          <h1><%= @quiz.title %></h1>
+	          <p><i class="fa fa-check"></i> - Correct Answer</p>
+
+	          <%= link_to 'Edit Quiz', edit_instructor_quiz_path(@quiz), class: "btn btn-primary mb-10" %>
+
+              <div class="row">
+              	<div class="col-md-12">
+              	<% @quiz.questions.each do |question| %>
+              	<div class="card mb-10">
+				  <div class="card-header">
+				    <%= question.question %>
+				  </div>
+				  <div class="card-body">
+				    <h5 class="card-title"><%= question.question %></h5>
+				    <ul class="unordered-list">
+				    	<% question.answers.each do |answer| %>
+						<li><%= answer.answer %> <% if answer.correct? %><i class="fa fa-check"></i> <% end %> </li>
+						<% end %>
+					</ul>
+				  </div>
+				</div>
+				<hr>
+                <% end %>
+            </div>
+              </div>
+
+          	</div>
+          </div>
+        </div>  
+  
+      </section>
+      <!-- End course-details Area -->
+      
+
+      <!-- Start popular-courses Area --> 
+      <section class="popular-courses-area section-gap courses-page">
+      </section>
+      <!-- End popular-courses Area -->         
+
+      <!-- Start cta-two Area -->
+      <section class="cta-two-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 cta-left">
+              <h1>Not Yet Satisfied with our Trend?</h1>
+            </div>
+            <div class="col-lg-4 cta-right">
+              <a class="primary-btn wh" href="#">view our blog</a>
+            </div>
+          </div>
+        </div>  
+      </section>
+      <!-- End cta-two Area -->                     

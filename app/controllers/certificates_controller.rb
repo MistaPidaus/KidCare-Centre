@@ -1,4 +1,5 @@
 class CertificatesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
   # GET /certificates

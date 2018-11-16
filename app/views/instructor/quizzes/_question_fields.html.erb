@@ -1,0 +1,16 @@
+<div class="card nested-fields question-container">
+	<div class="card-body">
+		<%= f.input :question, label: 'Question', required: true, input_html: {class: "form-control"} %>
+
+		<br>
+
+		<%= f.fields_for :answers do |answer| %>
+			<%= render 'answer_fields', :f => answer %> 
+		<% end %>
+
+	<p>
+		<%= link_to_add_association raw('<i class="fa fa-plus"></i> Add an answer'), f, :answers, class: "btn btn-sm btn-default" %>
+		<%= link_to_remove_association raw('<i class="fa fa-trash"></i> Remove question'), f, :class => 'btn btn-sm btn-default' %> 
+	</p>
+	</div>
+</div>
