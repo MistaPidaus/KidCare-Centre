@@ -45,10 +45,12 @@
 				  		Not Grade Yet
 				  	<% end %>
 				</p>
-				
+
+				<%= link_to 'Edit', edit_assignment_mark_path(@submission), class: "btn btn-primary" %>
+
 				<% end %>
 
-				<%= link_to 'Edit', edit_assignment_mark_path(@submission), class: "btn btn-primary" if @submission.present? %>
+				
 
 				<%= link_to 'Add new submission', new_assignment_mark_path(@assignment), class: "btn btn-primary" if @submission.blank? %>
 

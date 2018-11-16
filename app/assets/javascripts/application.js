@@ -24,4 +24,6 @@
 //= require college/owl.carousel.min.js
 //= require college/mail-script.js
 //= require college/main
+//= require cocoon
+//= require create_quiz
 //= require_tree ./college
