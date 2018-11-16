@@ -1,6 +1,10 @@
 # KidCare Centre (Ruby on Rails)
 
-A simple LMS made with Ruby on Rails during my internship period. 
+A simple LMS made with Ruby on Rails during my internship period.
+
+# Duration
+
+This unfinished project took 2 months. 
 
 # Features
   
