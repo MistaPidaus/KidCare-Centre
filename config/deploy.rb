@@ -1,5 +1,5 @@
 # Change these
-server '190.97.167.194', port: 3000, roles: [:web, :app, :db], primary: true
+server '190.97.167.194', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/MistaPidaus/KidCare-Centre.git'
 set :application,     'KidCare-Centre'
